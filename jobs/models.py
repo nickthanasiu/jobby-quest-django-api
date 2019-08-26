@@ -3,9 +3,9 @@ from django.db import models
 # Create your models here.
 
 class Job(models.Model):
-    SAFETY = 's'
-    BALLPARK = 'b'
-    REACH = 'r'
+    SAFETY = 'safety'
+    BALLPARK = 'ballpark'
+    REACH = 'reach'
 
     PROSPECT_RATING_CHOICES = (
         (SAFETY, 'safety'),
@@ -14,9 +14,9 @@ class Job(models.Model):
     )
 
     INTEREST_RATING_CHOICES = (
-        ('low', 1),
-        ('medium', 2),
-        ('high', 3)
+        (1, 1),
+        (2, 2),
+        (3, 3)
     )
 
     url = models.URLField(max_length = 250)
@@ -26,8 +26,13 @@ class Job(models.Model):
         choices = INTEREST_RATING_CHOICES,
         default = 3
     )
+
     user_prospect_rating = models.CharField(
-        max_length = 1,
+        max_length = 10,
         choices = PROSPECT_RATING_CHOICES,
     )
+
     img_url = models.URLField(max_length = 250)
+
+    def __str__(self):
+        return (self.company + ' - ' + self.job_title) 
