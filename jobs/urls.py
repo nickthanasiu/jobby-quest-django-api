@@ -5,5 +5,5 @@ from .views import JobView
 app_name = 'jobs'
 
 urlpatterns = [
-    path('jobs/', JobView.as_view()),
+    path('jobs/', JobView.as_view())
 ]

@@ -20,12 +20,13 @@ class JobView(APIView):
     def post(self, request):
         # get job data from request
         job = request.data.get('job')
-
+    
         # create Job from above data
         serializer = JobSerializer(data=job)
+
         if serializer.is_valid(raise_exception=True):
             job_saved = serializer.save()
 
-        return Response({ "success": "Job '{}' created successfully".format(job_saved.company + ' - ' + job_saved.job_title) })
+        return Response({ "newJob": serializer.data })
 
 

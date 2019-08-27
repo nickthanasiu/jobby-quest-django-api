@@ -24,12 +24,15 @@ class Job(models.Model):
     job_title = models.CharField(max_length = 50)
     user_interest_rating = models.IntegerField(
         choices = INTEREST_RATING_CHOICES,
-        default = 3
+        default = 3,
+        blank=True
     )
 
     user_prospect_rating = models.CharField(
         max_length = 10,
         choices = PROSPECT_RATING_CHOICES,
+        default=BALLPARK,
+        blank=True
     )
 
     img_url = models.URLField(max_length = 250)
